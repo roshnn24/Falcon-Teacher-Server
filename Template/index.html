@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC Group of Schools</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <!-- Parallax Video Background -->
+    <div class="parallax">
+        <video autoplay muted loop id="background-video">
+            <source src="../static/background.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="header main-page-header">
+            <div class="logo">
+                <div class="logo-circle">
+                    <img src="../static/logo.png" alt="ABC Logo" class="logo-image">
+                </div>
+            </div>
+            <h1 class="school-name">ABC Group of Schools</h1>
+        </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content">
+        <div class="container">
+            <div class="login-prompt">
+                <p>Please log in as a student or teacher</p>
+            </div>
+            <div class="button-container">
+                <button class="role-button student" onclick="handleLogin('student')">Student Login</button>
+                <button class="role-button teacher" onclick="showTeacherLogin()">Teacher Login</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Teacher Login Modal -->
+    <div id="teacher-login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeTeacherLogin()">&times;</span>
+            <h2>Teacher Login</h2>
+            <input type="text" id="teacher-name" placeholder="Enter Teacher Name">
+            <input type="password" id="teacher-password" placeholder="Enter Password">
+            <button onclick="handleTeacherLogin()">Login</button>
+            <p id="login-error" style="color: red; display: none;">Incorrect name or password. Please try again.</p>
+        </div>
+    </div>
+
+    <!-- Portal Slider Section -->
+    <div class="portal-slider">
+        <!-- Portal slider content goes here -->
+    </div>
+
+    <!-- Contact Information Section -->
+    <div class="info-section">
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            <p><strong>Email:</strong> contact@abcschool.com</p>
+            <p><strong>Phone:</strong> (123) 456-7890</p>
+            <p><strong>Address:</strong> 123 ABC Street, City, State, ZIP</p>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var header = document.querySelector('.main-page-header');
+            var content = document.querySelector('.content');
+
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (!entry.isIntersecting) {
+                        header.style.display = 'none';
+                    } else {
+                        header.style.display = 'block';
+                    }
+                });
+            }, { threshold: 0 });
+
+            observer.observe(content);
+        });
+
+        function handleLogin(role) {
+            if (role === 'student') {
+                window.location.href = 'student';
+            }
+        }
+
+        function showTeacherLogin() {
+            document.getElementById('teacher-login-modal').style.display = 'block';
+        }
+
+        function closeTeacherLogin() {
+            document.getElementById('teacher-login-modal').style.display = 'none';
+        }
+
+        function handleTeacherLogin() {
+            const teachers = {
+                'teacher1': 'password1',
+                'teacher2': 'password2'
+            };
+            const name = document.getElementById('teacher-name').value;
+            const password = document.getElementById('teacher-password').value;
+            if (teachers[name] === password) {
+                localStorage.setItem('teacherName', name); // Store teacher name in local storage
+                window.location.href = 'teacher';
+            } else {
+                document.getElementById('login-error').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
