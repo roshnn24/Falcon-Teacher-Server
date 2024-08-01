@@ -1,0 +1,275 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: 'Arial', sans-serif;
+}
+
+.parallax {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.header {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo-circle {
+    width: 100px;
+    height: 100px;
+    background-color: #48c6ef;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    animation: pulse 2s infinite;
+}
+
+.logo-image {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+    }
+}
+
+.school-name {
+    font-size: 3em;
+    animation: fadeIn 3s ease-in-out, colorChange 5s infinite;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+@keyframes colorChange {
+    0% { color: #48c6ef; }
+    25% { color: #6f86d6; }
+    50% { color: #48ef89; }
+    75% { color: #ef4848; }
+    100% { color: #48c6ef; }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.content {
+    height: 70vh; /* Reduced height to accommodate additional sections */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../static/portal.jpeg'); /* Path to your image */
+    background-size: cover;  /* Ensures the image covers the entire section */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents image repetition */
+    text-align: center;
+    padding: 20px;
+    position: relative; /* Ensure it can layer correctly */
+    z-index: 1; /* Ensures content is on top */
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8); /* Slight transparency for contrast */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.login-prompt p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.role-button {
+    margin: 10px 0;
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.role-button.student {
+    background-color: #48c6ef;
+    color: white;
+}
+
+.role-button.teacher {
+    background-color: #6f86d6;
+    color: white;
+}
+
+.role-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.info-section {
+    padding: 40px;
+    background-color: #f7f7f7;
+    text-align: center;
+}
+
+.info-section h2 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.faq ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.faq li {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.contact-info {
+    margin-top: 30px;
+}
+
+.contact-info p {
+    margin: 10px 0;
+    font-size: 1.1em;
+    color: #555;
+}
+
+@media (min-width: 600px) {
+    .button-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .role-button {
+        margin: 0 10px;
+        width: 200px;
+    }
+
+    .info-section {
+        text-align: center;
+        padding: 20px 40px;
+    }
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #6f86d6;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background-color: #5a6abc;
+}
+
+#login-error {
+    color: red;
+    display: none;
+}
