@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Portal - ABC Group of Schools</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --background-color: rgba(236, 240, 241, 0.8);
+            --text-color: #333;
+            --card-background: #fff;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: url('https://i.pinimg.com/736x/d0/b1/39/d0b1395ab921f995d3340b4a45007dd2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .teacher-portal {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 30px;
+            background: var(--card-background);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: var(--secondary-color);
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .dashboard-card {
+            background: var(--card-background);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .dashboard-card h3 {
+            font-size: 1.5em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .dashboard-card p {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin: 0;
+        }
+
+        .dashboard-card i {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        #student-list {
+            background: var(--card-background);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        #student-list h3 {
+            font-size: 1.8em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .student-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .student-card {
+            background: var(--background-color);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .student-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .student-card h4 {
+            margin: 0 0 10px;
+            color: var(--secondary-color);
+        }
+
+        .student-card p {
+            margin: 5px 0;
+            font-size: 0.9em;
+            color: var(--text-color);
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        #timetable-generator {
+            margin-top: 40px;
+            background: var(--card-background);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        #timetable-generator h3 {
+            font-size: 1.8em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #timetable-generator form {
+            display: grid;
+            gap: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        #timetable-generator label {
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        #timetable-generator input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        #timetable-generator button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            margin-top: 20px;
+        }
+
+        #timetable-generator button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        #timetable-result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            white-space: pre-wrap;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+                .navbar {
+            background-color: var(--primary-color);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar li {
+            margin: 0 15px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: var(--secondary-color);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #generate-ai-report {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #generate-ai-report:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#student-list">Student List</a></li>
+            <li><a href="#timetable-generator">Generate Timetable</a></li>
+            <li><a href="http://127.0.0.1:5000/generate-paper">Generate Question Paper</a></li>
+            <li><a href="http://127.0.0.1:5000/eval">Evaluator</a></li>
+        </ul>
+    </nav>
+    <div class="teacher-portal fade-in">
+        <div class="header">
+            <h1>Teacher Portal</h1>
+            <p>Welcome, <span id="teacher-name-display"></span>!</p>
+        </div>
+        <div class="dashboard">
+            <div class="dashboard-card">
+                <i class="fas fa-user-graduate"></i>
+                <h3>Total Students</h3>
+                <p id="total-students"></p>
+            </div>
+            <div class="dashboard-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Average CGPA</h3>
+                <p id="average-cgpa"></p>
+            </div>
+            <div class="dashboard-card">
+                <i class="fas fa-clipboard-check"></i>
+                <h3>Average AI Test Score</h3>
+                <p id="average-ai-score"></p>
+            </div>
+        </div>
+        <div id="student-list">
+            <h3>Student List</h3>
+            <div class="student-grid" id="student-grid"></div>
+        </div>
+        <div id="student-details" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="student-expanded-info"></div>
+                <button id="generate-ai-report">Generate AI Report</button>
+            </div>
+        </div>
+        <div class="button-container">
+            <button onclick="window.location.href='index.html'">Back to Home</button>
+        </div>
+        <div id="timetable-generator">
+            <h3>Generate Timetable</h3>
+            <form id="timetable-form">
+                <label for="hours-per-day">Hours per Day:</label>
+                <input type="number" id="hours-per-day" name="hours_per_day" required>
+
+                <label for="days-per-week">Days per Week:</label>
+                <input type="number" id="days-per-week" name="days_per_week" required>
+
+                <label for="semester-end-date">Semester End Date:</label>
+                <input type="date" id="semester-end-date" name="semester_end_date" required>
+
+                <label for="number-of-subjects">Number of Subjects:</label>
+                <input type="number" id="number-of-subjects" name="number_of_subjects" required>
+
+                <div id="subjects-container">
+                    <!-- Subject inputs will be added here dynamically -->
+                </div>
+                <button type="submit">Generate Timetable</button>
+            </form>
+            <div id="timetable-result"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const teacherName = localStorage.getItem('teacherName');
+            document.getElementById('teacher-name-display').textContent = teacherName || 'Teacher';
+
+            const studentGrid = document.getElementById('student-grid');
+            const studentDetails = document.getElementById('student-details');
+            const studentExpandedInfo = document.getElementById('student-expanded-info');
+            const closeBtn = document.querySelector('.close');
+            const generateAIReportBtn = document.getElementById('generate-ai-report');
+
+            fetch('/get_students')
+                .then(response => response.json())
+                .then(students => {
+                    let totalCGPA = 0;
+                    let totalAIScore = 0;
+
+                    students.forEach(student => {
+                        const studentCard = document.createElement('div');
+                        studentCard.className = 'student-card';
+                        studentCard.innerHTML = `
+                            <h4>${student.name}</h4>
+                            <p>Age: ${student.age}</p>
+                            <p>CGPA: ${student.cgpa}</p>
+                            <p>Course: ${student.course_pursuing}</p>
+                            <p>Assigned Test Score: ${student.assigned_test_score}</p>
+                        `;
+                        studentCard.addEventListener('click', () => showStudentDetails(student));
+                        studentGrid.appendChild(studentCard);
+
+                        totalCGPA += student.cgpa;
+                        totalAIScore += student.ai_test_score;
+                    });
+
+                    const totalStudents = students.length;
+                    const averageCGPA = totalStudents > 0 ? totalCGPA / totalStudents : 0;
+                    const averageAIScore = totalStudents > 0 ? totalAIScore / totalStudents : 0;
+
+                    document.getElementById('total-students').textContent = totalStudents;
+                    document.getElementById('average-cgpa').textContent = averageCGPA.toFixed(2);
+                    document.getElementById('average-ai-score').textContent = averageAIScore.toFixed(2);
+                })
+                .catch(error => {
+                    console.error('Error fetching student data:', error);
+                });
+
+            function showStudentDetails(student) {
+                studentExpandedInfo.innerHTML = `
+                    <h2>${student.name}</h2>
+                    <p>Age: ${student.age}</p>
+                    <p>CGPA: ${student.cgpa}</p>
+                    <p>Course: ${student.course_pursuing}</p>
+                    <p>Assigned Test Score: ${student.assigned_test_score}</p>
+                    <p>AI Test Score: ${student.ai_test_score}</p>
+                    <p>Interests: ${student.interests}</p>
+                    <p>Difficulty in: ${student.difficulty_in}</p>
+                    <p>Courses Taken: ${student.courses_taken}</p>
+                `;
+                studentExpandedInfo.dataset.studentData = JSON.stringify(student);
+                studentDetails.style.display = 'block';
+            }
+
+            closeBtn.onclick = function() {
+                studentDetails.style.display = 'none';
+            }
+
+            generateAIReportBtn.onclick = function() {
+                const studentData = JSON.parse(studentExpandedInfo.dataset.studentData);
+                fetch('/generate_report', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(studentData),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const reportDiv = document.createElement('div');
+                    reportDiv.innerHTML = `<h3>AI Generated Report</h3><p>${data.report}</p>`;
+                    studentExpandedInfo.appendChild(reportDiv);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('Error generating AI report');
+                });
+            };
+
+            window.onclick = function(event) {
+                if (event.target == studentDetails) {
+                    studentDetails.style.display = 'none';
+                }
+            }
+
+            const timetableForm = document.getElementById('timetable-form');
+            const timetableResult = document.getElementById('timetable-result');
+
+            const numberOfSubjectsInput = document.getElementById('number-of-subjects');
+            numberOfSubjectsInput.addEventListener('change', function() {
+                const subjectsContainer = document.getElementById('subjects-container');
+                subjectsContainer.innerHTML = '';
+
+                const numberOfSubjects = parseInt(this.value);
+                for (let i = 0; i < numberOfSubjects; i++) {
+                    const subjectLabel = document.createElement('label');
+                    subjectLabel.textContent = `Subject ${i + 1}:`;
+                    const subjectInput = document.createElement('input');
+                    subjectInput.type = 'text';
+                    subjectInput.name = `subject_${i + 1}`;
+                    subjectInput.required = true;
+
+                    subjectsContainer.appendChild(subjectLabel);
+                    subjectsContainer.appendChild(subjectInput);
+                }
+            });
+
+            timetableForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(timetableForm);
+                const subjects = [];
+                for (let [key, value] of formData.entries()) {
+                    if (key.startsWith('subject_')) {
+                        subjects.push(value);
+                    }
+                }
+                const timetableData = {
+                    hours_per_day: formData.get('hours_per_day'),
+                    days_per_week: formData.get('days_per_week'),
+                    semester_end_date: formData.get('semester_end_date'),
+                    subjects: subjects
+                };
+
+                fetch('/generate-timetable', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(timetableData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        timetableResult.textContent = 'Error: ' + data.error;
+                    } else {
+                        timetableResult.textContent = data.timetable;
+                    }
+                })
+                .catch(error => {
+                    timetableResult.textContent = 'Error: ' + error.message;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

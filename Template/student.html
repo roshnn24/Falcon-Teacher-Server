@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - ABC Group of Schools</title>
+    <style>
+        /* General Body and HTML */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .student-portal {
+            background-color: #f1c40f;
+            color: #2c3e50;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .student-portal .content {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .student-portal button {
+            padding: 15px 25px;
+            background-color: #e67e22;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .student-portal button:hover {
+            background-color: #d35400;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="student-portal">
+        <div class="content">
+            <h1>Welcome, Student!</h1>
+            <p>This is the student portal. Here you can access your classes, assignments, and resources.</p>
+            <button onclick="window.location.href='index.html'">Back to Home</button>
+        </div>
+    </div>
+</body>
+</html>

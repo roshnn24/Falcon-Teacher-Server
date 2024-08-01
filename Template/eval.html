@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Evaluation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header-image {
+            background-image: url('https://img.freepik.com/free-photo/school-items-with-pink-background_23-2148565152.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        h1 {
+            color: #fff;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        select, input[type="file"], input[type="text"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+        .input-section {
+            display: none;
+            margin-top: 15px;
+        }
+        #file-input label, #text-input label {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        #max-marks-section {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-image">
+        <h1>Exam Evaluation System</h1>
+    </div>
+    <div class="container">
+        <form action="/eval" method="post" enctype="multipart/form-data">
+            <label for="input_type">Select Input Type:</label>
+            <select name="input_type" id="input_type" onchange="showInputForm()">
+                <option value="">-- Select an option --</option>
+                <option value="file">File Upload</option>
+                <option value="text">Text Input</option>
+            </select>
+
+            <div id="file-input" class="input-section">
+                <label for="question_file">Question Paper:</label>
+                <input type="file" name="question_file" id="question_file" accept=".pdf,.jpeg,.jpg,.png">
+
+                <label for="answer_file">Answer Sheet:</label>
+                <input type="file" name="answer_file" id="answer_file" accept=".pdf,.jpeg,.jpg,.png">
+            </div>
+
+            <div id="text-input" class="input-section">
+                <label for="question_text">Enter Questions:</label>
+                <textarea name="question_text" id="question_text" rows="6" placeholder="Enter your questions here..."></textarea>
+
+                <label for="answer_text">Enter Answers:</label>
+                <textarea name="answer_text" id="answer_text" rows="6" placeholder="Enter your answers here..."></textarea>
+            </div>
+
+            <div id="max-marks-section">
+                <label for="max_marks">Max Marks:</label>
+                <input type="text" name="max_marks" id="max_marks" placeholder="Enter maximum marks" required>
+            </div>
+
+            <input type="submit" value="Submit and Evaluate">
+        </form>
+
+
+    </div>
+
+    <script>
+        function showInputForm() {
+            const inputType = document.getElementById('input_type').value;
+            document.getElementById('file-input').style.display = inputType === 'file' ? 'block' : 'none';
+            document.getElementById('text-input').style.display = inputType === 'text' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>
